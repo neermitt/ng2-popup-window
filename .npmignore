@@ -1,0 +1,7 @@
+.*
+**/webpack.config.js
+**/webpack.demo.js
+**/tslint.json
+**/tsconfig.json
+**/node_modules
+demo

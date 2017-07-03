@@ -1,0 +1,63 @@
+{
+  "name": "ng2-popup-window",
+  "version": "0.1.0",
+  "description": "Angular 2 Popup Window Module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neermitt/ng2-popup-window.git"
+  },
+  "bugs": {
+    "url": "https://github.com/neermitt/ng2-popup-window/issues"
+  },
+  "homepage": "https://github.com/neermitt/ng2-popup-window#readme",
+  "author": "Neeraj Mittal <mittal.neeraj@gmail.com>",
+  "license": "Apache-2.0",
+  "typings": "./lib",
+  "main": "./_bundles/ng2-popup-window.js",
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack",
+    "clean:bundle": "yarn run rimraf -- _bundles",
+    "clean:lib": "yarn run rimraf -- lib",
+    "clean:install": "yarn install --no-progress",
+    "clean": "yarn cache clean && yarn run rimraf -- node_modules _bundles lib",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --host localhost.cisco.com --port 8000 --config webpack.demo.js --history-api-fallback --content-base demo",
+    "lint": "yarn run tslint --project tsconfig.json \"src/**/*.ts\"",
+    "postinstall": "yarn run build",
+    "preclean:install": "yarn run clean",
+    "rimraf": "rimraf",
+    "standard": "standard index.js",
+    "tslint": "tslint",
+    "webpack": "webpack"
+  },
+  "peerDependencies": {
+    "@angular/common": "2.x || 4.x",
+    "@angular/core": "2.x || 4.x"
+  },
+  "devDependencies": {
+    "@angular/common": "^4.2.4",
+    "@angular/compiler": "^4.2.4",
+    "@angular/compiler-cli": "^4.2.4",
+    "@angular/core": "^4.2.4",
+    "@angular/platform-browser": "^4.2.4",
+    "@angular/platform-browser-dynamic": "^4.2.4",
+    "awesome-typescript-loader": "^3.1.3",
+    "codelyzer": "^3.1.1",
+    "core-js": "^2.4.1",
+    "cross-env": "^5.0.1",
+    "rimraf": "^2.6.1",
+    "rxjs": "^5.4.1",
+    "tslint": "^5.4.3",
+    "typescript": "^2.3.4",
+    "webpack": "^3.0.0",
+    "webpack-dev-server": "^2.5.0",
+    "webpack-rxjs-externals": "^1.0.0",
+    "zone.js": "^0.8.12",
+    "ghooks": "^1.2.4",
+    "standard": "^8.4.0"
+  },
+  "config": {
+    "ghooks": {
+      "pre-commit": "yarn run standard"
+    }
+  }
+}

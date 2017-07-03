@@ -1,0 +1,10 @@
+#Node
+node_modules/
+npm-debug.log
+
+_bundles/
+lib/
+
+### IntelliJ
+*.iml
+.idea/
