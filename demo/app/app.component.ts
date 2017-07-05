@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
-import {PopupUrl, PopupWindow, PopupWindowService} from '../../src/services';
+import 'rxjs/add/operator/do';
+
+import {DefaultPopupHandler} from '../../src/services';
 
 @Component({
   selector: 'app-root',
@@ -8,24 +10,38 @@ import {PopupUrl, PopupWindow, PopupWindowService} from '../../src/services';
 })
 export class AppComponent {
   title = 'app';
-  popup: PopupWindow;
 
-  constructor(private popupService: PopupWindowService) {
+  constructor(private popupService: DefaultPopupHandler) {
 
   }
 
   open() {
-    this.popup = this.popupService.open("http://localhost:8000/", "test", {
-      width: 400,
-      height: 400
-    });
-
-    this.popup.onUrlChange().do((x: PopupUrl) => {
-      console.log("Window loaded " + x.url);
-    }).subscribe();
+    this.popupService.load("http://localhost:8000/?test=mine", {
+      url: 'http://localhost:8000/',
+      window_name: 'test',
+      popupOptions: {
+        width: 400,
+        height: 400
+      }
+    }).subscribe(
+      data => {
+        console.log(data)
+      }, error => {
+        console.log('on Error %s', error);
+      });
   }
 
   close() {
-    this.popup.close();
+    this.popupService.close();
+  }
+
+  preload() {
+    this.popupService.preload({
+      window_name: 'test',
+      popupOptions: {
+        width: 400,
+        height: 400
+      }
+    });
   }
 }

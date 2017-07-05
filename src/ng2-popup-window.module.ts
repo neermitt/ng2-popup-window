@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
-import {PopupWindowService} from './services';
+import {DefaultPopupHandler, WindowService} from './services';
 
 const POPUP_WINDOW_COMPONENTS = [];
 
@@ -9,7 +9,7 @@ const POPUP_WINDOW_DIRECTIVES = [];
 
 const POPUP_WINDOW_PIPES = [];
 
-const POPUP_WINDOW_SERVICES = [PopupWindowService];
+const POPUP_WINDOW_SERVICES = [WindowService, DefaultPopupHandler];
 
 const POPUP_WINDOW_VALIDATORS = [];
 

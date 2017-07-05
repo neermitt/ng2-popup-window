@@ -4,6 +4,7 @@ npm-debug.log
 
 _bundles/
 lib/
+coverage
 
 ### IntelliJ
 *.iml
