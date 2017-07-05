@@ -3,9 +3,8 @@ language: node_js
 node_js:
   - stable
 script:
-  - yarn test
+  - yarn test:ci
 after_success:
-  - yarn run report-coverage
 deploy:
    provider: npm
    email: "mittal.neeraj@gmail.com"
