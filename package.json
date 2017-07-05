@@ -26,9 +26,10 @@
     "standard": "standard index.js",
     "tslint": "tslint",
     "webpack": "webpack",
-    "test": "karma start",
-    "test:ci": "./node_modules/.bin/karma start --single-run --browsers PhantomJS",
-    "report-coverage": "nyc report --reporter=lcov > coverage.lcov && codecov"
+    "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS",
+    "test:ci": "karma:start",
+    "report-coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
+    "release": "standard-version"
   },
   "peerDependencies": {
     "@angular/common": "2.x || 4.x",

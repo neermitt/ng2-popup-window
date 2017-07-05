@@ -2,12 +2,15 @@ sudo: false
 language: node_js
 node_js:
   - stable
-script:
-  - yarn test:ci
+before_install:
+  - npm i -g makeshift && makeshift -s @mittal.neeraj -r https://registry.npmjs.org
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
 after_success:
 deploy:
-   provider: npm
-   email: "mittal.neeraj@gmail.com"
-   api_key: "$NPM_TOKEN"
+   provider: yarn
+   email: mittal.neeraj@gmail.com
+   api_key: $NPM_TOKEN
    on:
      tags: true
