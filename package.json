@@ -16,10 +16,9 @@
   "main": "./_bundles/ng2-popup-window.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
-    "clean:bundle": "yarn run rimraf -- _bundles",
-    "clean:lib": "yarn run rimraf -- lib",
+    "clean:bundle": "yarn run rimraf -- _bundles lib",
     "clean:install": "yarn install --no-progress",
-    "clean": "yarn cache clean && yarn run rimraf -- node_modules _bundles lib",
+    "clean": "yarn cache clean && yarn run rimraf -- node_modules _bundles lib coverage",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --host localhost.cisco.com --port 8000 --config webpack.demo.js --history-api-fallback --content-base demo",
     "lint": "yarn run tslint --project tsconfig.json \"src/**/*.ts\"",
     "preclean:install": "yarn run clean",
@@ -27,7 +26,8 @@
     "standard": "standard index.js",
     "tslint": "tslint",
     "webpack": "webpack",
-    "test": "karma start"
+    "test": "nyc ./node_modules/.bin/ava -v",
+    "report-coverage": "nyc report --reporter=lcov > coverage.lcov && codecov"
   },
   "peerDependencies": {
     "@angular/common": "2.x || 4.x",
@@ -74,7 +74,11 @@
     "webpack": "^3.0.0",
     "webpack-dev-server": "^2.5.0",
     "webpack-rxjs-externals": "^1.0.0",
-    "zone.js": "^0.8.12"
+    "zone.js": "^0.8.12",
+    "ava": "^0.16.0",
+    "co-exec": "^1.0",
+    "codecov": "^1.0.1",
+    "nyc": "^10.0.0"
   },
   "config": {
     "ghooks": {

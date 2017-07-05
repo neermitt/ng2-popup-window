@@ -4,4 +4,9 @@
 **/tslint.json
 **/tsconfig.json
 **/node_modules
-demo
+**/karma.conf.js
+config/
+demo/
+coverage/
+codecov.yml
+

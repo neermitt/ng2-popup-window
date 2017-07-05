@@ -1,0 +1,14 @@
+sudo: false
+language: node_js
+node_js:
+  - stable
+script:
+  - yarn test
+after_success:
+  - yarn run report-coverage
+deploy:
+   provider: npm
+   email: "mittal.neeraj@gmail.com"
+   api_key: "$NPM_TOKEN"
+   on:
+     tags: true
